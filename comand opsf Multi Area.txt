@@ -1,0 +1,38 @@
+
+R1
+
+
+router ospf 1
+router-id 1.1.1.1
+network 192.168.1.0 0.0.0.255 area 1
+network 192.168.2.0 0.0.0.255 area 1
+network 192.168.12.0 0.0.0.3 area 0
+passive-interface lo1
+passive-interface lo2
+exit
+ip route 0.0.0.0 0.0.0.0 lo0
+router ospf 1
+default-information originate
+
+
+R2
+
+router ospf 
+router-id 2.2.2.2
+network 192.168.12.0 0.0.0.3 area 0
+network 192.168.23.0 0.0.0.3 area 3
+network 192.168.6.0 0.0.0.255 area 3
+passive-interface lo6
+
+R3
+
+
+
+
+router ospf 1
+router-id 3.3.3.3
+network 192.168.23.0 0.0.0.3 area 3
+network 192.168.4.0 0.0.0.255 area 3
+network 192.168.5.0 0.0.0.255 area 3
+passive-interface lo4
+passive-interface l05
